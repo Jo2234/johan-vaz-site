@@ -3,388 +3,389 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Johan Vaz — AI × Finance Builder</title>
-<meta name="description" content="Johan Vaz builds AI systems for financial research and risk — LLM evals, cited retrieval, and market tooling. NUS Computer Science + Quantitative Finance.">
+<title>Johan Vaz (JVAZ) — Initiating Coverage</title>
+<meta name="description" content="Independent research note initiating coverage on Johan Vaz: AI × quantitative finance builder. Live systems, honest risk factors, no price target.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>▲</text></svg>">
 <style>
   :root {
-    --bg: #0a0e14;
-    --bg-raised: #10151f;
-    --bg-card: #121826;
-    --border: #1e2736;
-    --border-hover: #2e3d55;
-    --text: #d7dee9;
-    --text-dim: #8b96a8;
-    --text-faint: #5c6675;
-    --accent: #4ade80;
-    --accent-dim: rgba(74, 222, 128, 0.12);
-    --amber: #fbbf24;
-    --mono: "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
-    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    --paper: #f7f4ed;
+    --paper-raised: #fffdf8;
+    --ink: #1a1a1f;
+    --ink-soft: #4a4a52;
+    --ink-faint: #8b8b93;
+    --rule: #d8d3c6;
+    --rule-strong: #1a1a1f;
+    --accent: #8c2f22;        /* oxblood — financial print red */
+    --up: #1d6b45;            /* ledger green */
+    --up-bg: #e5efe7;
+    --accent-bg: #f3e6e3;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --mono: "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #16151a;
+      --paper-raised: #1d1c22;
+      --ink: #e8e5dc;
+      --ink-soft: #b3b0a6;
+      --ink-faint: #7a7871;
+      --rule: #35333c;
+      --rule-strong: #e8e5dc;
+      --accent: #d96a58;
+      --up: #5bbf8b;
+      --up-bg: #14261c;
+      --accent-bg: #2b1c19;
+    }
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    line-height: 1.65;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--serif); line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    background-image:
-      linear-gradient(rgba(30, 39, 54, 0.25) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(30, 39, 54, 0.25) 1px, transparent 1px);
-    background-size: 48px 48px;
   }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+  .sheet { max-width: 880px; margin: 0 auto; padding: 0 28px 80px; }
+  a { color: inherit; }
 
-  /* ---------- Nav ---------- */
-  nav {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(10, 14, 20, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+  /* ---------- Masthead ---------- */
+  .masthead {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 26px 0 12px; border-bottom: 3px double var(--rule-strong);
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-soft);
+    flex-wrap: wrap; gap: 6px;
   }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 60px;
-  }
-  .logo { font-family: var(--mono); font-size: 15px; color: var(--text); text-decoration: none; }
-  .logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 28px; }
-  .nav-links a {
-    color: var(--text-dim); text-decoration: none; font-size: 14px;
-    transition: color 0.15s;
-  }
-  .nav-links a:hover { color: var(--accent); }
+  .masthead b { color: var(--ink); font-weight: 700; }
 
-  /* ---------- Hero ---------- */
-  header { padding: 96px 0 72px; }
-  .kicker {
-    font-family: var(--mono); font-size: 13px; color: var(--accent);
-    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px;
-    display: flex; align-items: center; gap: 10px;
+  .docline {
+    display: flex; justify-content: space-between; padding: 10px 0;
+    font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border-bottom: 1px solid var(--rule); flex-wrap: wrap; gap: 6px;
   }
-  .kicker::before { content: ""; display: block; width: 32px; height: 1px; background: var(--accent); }
+
+  /* ---------- Title block ---------- */
+  .title-block { padding: 44px 0 8px; position: relative; }
   h1 {
-    font-size: clamp(34px, 6vw, 56px); font-weight: 700; letter-spacing: -0.02em;
-    line-height: 1.12; margin-bottom: 22px;
+    font-size: clamp(40px, 7vw, 64px); font-weight: 700; letter-spacing: -0.015em;
+    line-height: 1.03;
   }
-  h1 .dim { color: var(--text-faint); }
-  .lede {
-    font-size: 18px; color: var(--text-dim); max-width: 620px; margin-bottom: 36px;
+  .tick { font-family: var(--mono); font-size: 0.42em; color: var(--ink-faint); font-weight: 400; letter-spacing: 0.05em; vertical-align: super; }
+  .subtitle {
+    font-size: 20px; font-style: italic; color: var(--ink-soft); margin-top: 14px; max-width: 560px;
   }
-  .lede strong { color: var(--text); font-weight: 600; }
-  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 11px 22px; border-radius: 8px; font-size: 14.5px; font-weight: 600;
-    text-decoration: none; transition: all 0.15s; border: 1px solid transparent;
+  .stamp {
+    position: absolute; right: 0; top: 52px; transform: rotate(7deg);
+    border: 3px solid var(--up); color: var(--up); border-radius: 6px;
+    font-family: var(--mono); font-weight: 700; font-size: 20px; letter-spacing: 0.14em;
+    padding: 6px 18px; opacity: 0.9; background: var(--up-bg);
   }
-  .btn-primary { background: var(--accent); color: #08130c; }
-  .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
-  .btn-ghost { border-color: var(--border-hover); color: var(--text); }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  @media (max-width: 640px) { .stamp { position: static; display: inline-block; margin-top: 18px; transform: rotate(-2deg); font-size: 16px; } }
 
-  /* ---------- Ticker strip ---------- */
-  .strip {
-    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    background: var(--bg-raised); padding: 14px 0; overflow: hidden;
+  /* ---------- Stats box ---------- */
+  .statbox {
+    margin: 36px 0 0; border-top: 2px solid var(--rule-strong); border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    font-family: var(--mono);
   }
-  .strip-inner {
-    display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
-    font-family: var(--mono); font-size: 12.5px; color: var(--text-dim);
+  @media (max-width: 640px) { .statbox { grid-template-columns: repeat(2, 1fr); } }
+  .stat { padding: 14px 14px 14px 0; border-right: 1px solid var(--rule); }
+  .stat:last-child { border-right: none; }
+  .stat + .stat { padding-left: 14px; }
+  @media (max-width: 640px) { .stat:nth-child(2n) { border-right: none; } .stat:nth-child(3) { padding-left: 0; border-right: 1px solid var(--rule); } .stat:nth-child(n+3) { border-top: 1px solid var(--rule); } }
+  .stat dt { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+  .stat dd { font-size: 14.5px; margin-top: 4px; color: var(--ink); }
+  .stat dd .live-dot { color: var(--up); }
+
+  /* ---------- Live tape ---------- */
+  .tape {
+    margin-top: 0; padding: 12px 16px; background: var(--paper-raised);
+    border: 1px solid var(--rule); border-top: none;
+    font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft);
+    display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap;
   }
-  .strip-inner b { color: var(--accent); font-weight: 600; }
+  .tape .live-dot { color: var(--up); animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { opacity: 0.35; } }
+  .tape b { color: var(--ink); }
+  .tape a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
 
   /* ---------- Sections ---------- */
-  section { padding: 76px 0; }
-  .sec-label {
-    font-family: var(--mono); font-size: 13px; color: var(--accent);
-    letter-spacing: 0.08em; margin-bottom: 10px;
+  section { padding-top: 52px; }
+  h2 {
+    font-size: 13px; font-family: var(--mono); letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); border-bottom: 2px solid var(--rule-strong); padding-bottom: 8px; margin-bottom: 22px;
+    display: flex; justify-content: space-between; align-items: baseline;
   }
-  h2 { font-size: 30px; letter-spacing: -0.01em; margin-bottom: 14px; }
-  .sec-sub { color: var(--text-dim); max-width: 600px; margin-bottom: 42px; }
+  h2 .secno { color: var(--ink-faint); }
+  .prose { font-size: 17.5px; max-width: 660px; }
+  .prose p + p { margin-top: 14px; }
 
-  /* ---------- Project cards ---------- */
-  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
-  .card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-    padding: 26px; text-decoration: none; color: inherit; display: flex;
-    flex-direction: column; gap: 12px; transition: all 0.18s; position: relative;
+  ol.thesis { counter-reset: th; list-style: none; max-width: 680px; }
+  ol.thesis li { counter-increment: th; padding: 16px 0 16px 56px; position: relative; border-bottom: 1px solid var(--rule); font-size: 17px; }
+  ol.thesis li::before {
+    content: counter(th, decimal-leading-zero); position: absolute; left: 0; top: 18px;
+    font-family: var(--mono); font-size: 15px; color: var(--accent); font-weight: 700;
   }
-  .card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
-  .card:hover .card-title { color: var(--accent); }
-  .card-top { display: flex; justify-content: space-between; align-items: center; }
-  .card-title { font-size: 17px; font-weight: 650; transition: color 0.15s; }
-  .card-arrow { color: var(--text-faint); font-family: var(--mono); font-size: 14px; transition: all 0.18s; }
-  .card:hover .card-arrow { color: var(--accent); transform: translate(2px, -2px); }
-  .card-desc { font-size: 14.5px; color: var(--text-dim); flex-grow: 1; }
-  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tag {
-    font-family: var(--mono); font-size: 11px; color: var(--text-dim);
-    background: var(--accent-dim); color: var(--accent);
-    padding: 3px 9px; border-radius: 99px;
-  }
-  .card.flagship { border-color: rgba(74, 222, 128, 0.35); }
-  .flag-badge {
-    position: absolute; top: -10px; right: 16px;
-    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
-    background: var(--accent); color: #08130c; font-weight: 700;
-    padding: 2px 10px; border-radius: 99px;
-  }
-  .live-badge {
-    position: absolute; top: -10px; left: 16px;
-    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
-    background: #0c2517; color: var(--accent); font-weight: 700;
-    border: 1px solid var(--accent);
-    padding: 2px 10px; border-radius: 99px;
-  }
-  .live-badge::before { content: "● "; }
+  ol.thesis b { font-weight: 700; }
 
-  /* ---------- Approach ---------- */
-  .approach { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  @media (max-width: 720px) { .approach { grid-template-columns: 1fr; } }
-  .principle {
-    border-left: 2px solid var(--accent); padding: 4px 0 4px 18px;
+  /* ---------- Coverage table ---------- */
+  .cov-scroll { overflow-x: auto; }
+  table.coverage { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 620px; }
+  table.coverage th {
+    font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--ink-faint); text-align: left; padding: 8px 14px 8px 0; border-bottom: 2px solid var(--rule-strong);
   }
-  .principle h3 { font-size: 15.5px; margin-bottom: 6px; }
-  .principle p { font-size: 14px; color: var(--text-dim); }
+  table.coverage td { padding: 13px 14px 13px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  table.coverage td.name { font-weight: 700; white-space: nowrap; }
+  table.coverage td.name a { text-decoration: none; }
+  table.coverage td.name a:hover { color: var(--accent); }
+  .badge {
+    display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; padding: 2px 8px; border-radius: 3px; white-space: nowrap;
+  }
+  .badge.live { background: var(--up-bg); color: var(--up); border: 1px solid var(--up); }
+  .badge.code { background: transparent; color: var(--ink-faint); border: 1px solid var(--rule); }
+  td .sub { display: block; font-size: 13px; color: var(--ink-faint); font-family: var(--mono); margin-top: 3px; }
+  td .sub a { color: var(--accent); text-decoration: none; }
 
-  /* ---------- About ---------- */
-  .about-flex { display: flex; gap: 48px; align-items: flex-start; }
-  @media (max-width: 720px) { .about-flex { flex-direction: column; } }
-  .about-text { flex: 1.5; color: var(--text-dim); font-size: 16px; }
-  .about-text p + p { margin-top: 16px; }
-  .about-text strong { color: var(--text); }
-  .fact-box {
-    flex: 1; background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 24px; font-family: var(--mono); font-size: 13px;
+  /* ---------- Live demo widget ---------- */
+  .demo {
+    margin-top: 26px; border: 2px solid var(--rule-strong); background: var(--paper-raised);
+    padding: 22px 24px;
   }
-  .fact-box dt { color: var(--text-faint); margin-top: 14px; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase; }
-  .fact-box dt:first-child { margin-top: 0; }
-  .fact-box dd { color: var(--text); margin-top: 3px; }
+  .demo-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+  .demo-head h3 { font-size: 19px; }
+  .demo-head .src { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
+  .demo p.exp { font-size: 15px; color: var(--ink-soft); margin-top: 6px; max-width: 560px; }
+  .demo-controls { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .demo button {
+    font-family: var(--mono); font-size: 13px; font-weight: 700; cursor: pointer;
+    background: var(--ink); color: var(--paper); border: none; padding: 10px 18px; border-radius: 4px;
+  }
+  .demo button:hover { background: var(--accent); }
+  .demo button.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+  .demo button.ghost:hover { color: var(--accent); border-color: var(--accent); background: transparent; }
+  .demo-out {
+    margin-top: 16px; font-family: var(--mono); font-size: 13px; line-height: 1.7;
+    white-space: pre-wrap; color: var(--ink-soft); min-height: 20px;
+  }
+  .demo-out b { color: var(--ink); }
+  .demo-out .risk-hi { color: var(--accent); font-weight: 700; }
 
-  /* ---------- Contact ---------- */
-  .contact-card {
-    background: linear-gradient(135deg, var(--bg-card), #0f1a14);
-    border: 1px solid rgba(74, 222, 128, 0.25); border-radius: 16px;
-    padding: 56px 40px; text-align: center;
+  /* ---------- Risk factors ---------- */
+  ul.risks { list-style: none; max-width: 680px; }
+  ul.risks li { padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid var(--rule); font-size: 16.5px; }
+  ul.risks li::before { content: "▪"; position: absolute; left: 4px; color: var(--accent); }
+  ul.risks i { color: var(--ink-soft); }
+
+  /* ---------- Certification / contact ---------- */
+  .cert {
+    margin-top: 56px; border: 2px solid var(--rule-strong); padding: 30px;
+    background: var(--paper-raised);
   }
-  .contact-card h2 { margin-bottom: 12px; }
-  .contact-card p { color: var(--text-dim); max-width: 480px; margin: 0 auto 32px; }
+  .cert h2 { border: none; margin-bottom: 10px; padding: 0; }
+  .cert p { font-size: 16.5px; max-width: 640px; font-style: italic; color: var(--ink-soft); }
+  .cert .sig { font-family: var(--serif); font-size: 26px; margin-top: 18px; font-style: italic; }
+  .contact-row { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+  .contact-row a {
+    font-family: var(--mono); font-size: 13px; font-weight: 700; text-decoration: none;
+    padding: 10px 18px; border-radius: 4px; background: var(--ink); color: var(--paper);
+  }
+  .contact-row a:hover { background: var(--accent); }
+  .contact-row a.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+  .contact-row a.ghost:hover { color: var(--accent); border-color: var(--accent); }
 
   footer {
-    border-top: 1px solid var(--border); padding: 32px 0;
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-    font-size: 13px; color: var(--text-faint); font-family: var(--mono);
+    margin-top: 60px; padding-top: 16px; border-top: 3px double var(--rule-strong);
+    font-family: var(--mono); font-size: 11px; color: var(--ink-faint);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    text-transform: uppercase; letter-spacing: 0.08em;
   }
-  footer a { color: var(--text-dim); text-decoration: none; }
-  footer a:hover { color: var(--accent); }
+  footer a { color: var(--ink-soft); text-decoration: none; }
 </style>
 </head>
 <body>
+<div class="sheet">
 
-<nav>
-  <div class="wrap nav-inner">
-    <a class="logo" href="#">johan<span>@</span>vaz<span>:~$</span></a>
-    <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#approach">Approach</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+  <div class="masthead">
+    <span><b>VAZ RESEARCH</b> · Independent Coverage</span>
+    <span>Equity Research — Technology / Financials</span>
+  </div>
+  <div class="docline">
+    <span>Initiating coverage</span>
+    <span id="note-date">2026</span>
+    <span>Distribution: unrestricted</span>
+  </div>
+
+  <div class="title-block">
+    <div class="stamp">OVERWEIGHT</div>
+    <h1>Johan Vaz <span class="tick">JVAZ:SG</span></h1>
+    <p class="subtitle">A small-cap builder at the intersection of AI systems and quantitative finance. Every claim in this note is verifiable — most of them are running.</p>
+  </div>
+
+  <dl class="statbox">
+    <div class="stat"><dt>Exchange</dt><dd>Singapore · NUS</dd></div>
+    <div class="stat"><dt>Sector</dt><dd>CS + Quant Finance</dd></div>
+    <div class="stat"><dt>Live systems</dt><dd><span class="live-dot">●</span> 4 in production</dd></div>
+    <div class="stat"><dt>Seeking</dt><dd>Internship / junior</dd></div>
+  </dl>
+  <div class="tape" id="tape">
+    <span class="live-dot">●</span>
+    <span id="tape-text">Connecting to JVAZ's own market-regime API…</span>
+  </div>
+
+  <section>
+    <h2><span>Investment thesis</span><span class="secno">§ 1</span></h2>
+    <ol class="thesis">
+      <li><b>Ships whole systems, not snippets.</b> Corpus ingestion to eval harness to deployed frontend — the coverage universe below is built end-to-end and most of it is live in production, deployed and monitored by the subject himself.</li>
+      <li><b>Treats trust as an engineering problem.</b> Retrieval with chunk-level citations, refusal behavior tested like a feature, eval suites built before the demo. In a market flooded with fluent-but-unverified AI, verification is the scarce asset.</li>
+      <li><b>Reads the 10-K and writes the parser.</b> Dual mandate in CS and quantitative finance means the tools reflect how analysts actually work — risk decomposition, regime context, covenant headroom — not how a demo looks.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span>Coverage universe</span><span class="secno">§ 2</span></h2>
+    <div class="cov-scroll">
+    <table class="coverage">
+      <thead><tr><th>System</th><th>Status</th><th>What it proves</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="name"><a href="https://github.com/Jo2234/ai-equity-research-copilot" target="_blank" rel="noopener">Equity Research Copilot</a><span class="sub">SEC filings · cited RAG · evals</span></td>
+          <td><span class="badge code">CODE</span></td>
+          <td>Document-grounded research over EDGAR filings with chunk-level citations, structured memos, and a finance QA eval set scoring citation precision, refusals, and hallucination risk.</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="https://market-regime-dashboard-mu.vercel.app" target="_blank" rel="noopener">Market Regime Dashboard</a><span class="sub"><a href="https://github.com/Jo2234/us-market-regime-dashboard" target="_blank" rel="noopener">source ↗</a> · FastAPI + React</span></td>
+          <td><span class="badge live">● LIVE</span></td>
+          <td>Macro and risk context with transparent regime rules and freshness checks — the same API powering the live strip at the top of this note.</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="https://portfolio-risk-copilot-pi.vercel.app" target="_blank" rel="noopener">Portfolio Risk Copilot</a><span class="sub"><a href="https://github.com/Jo2234/portfolio-risk-copilot" target="_blank" rel="noopener">source ↗</a> · VaR / ES / stress</span></td>
+          <td><span class="badge live">● LIVE</span></td>
+          <td>API-first risk engine: VaR, expected shortfall, variance contributions, concentration flags, stress scenarios, plain-English commentary. Try it below without leaving this page.</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="https://finance-labs-showcase.vercel.app" target="_blank" rel="noopener">finance-labs</a><span class="sub"><a href="https://github.com/Jo2234/finance-labs" target="_blank" rel="noopener">source ↗</a> · 10 diagnostics · CI green</span></td>
+          <td><span class="badge live">● LIVE</span></td>
+          <td>Ten offline, test-covered risk diagnostics — margin cascades, ETF liquidity stress, option skew, covenant headroom, central-bank path — with a gallery of real CLI output.</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="https://github.com/Jo2234/financial-llm-eval-harness" target="_blank" rel="noopener">Financial LLM Eval Harness</a><span class="sub">50 cases · regression scoring</span></td>
+          <td><span class="badge code">CODE</span></td>
+          <td>Evaluation suite for financial QA systems: factual extraction, multi-document synthesis, refusal behavior, adversarial prompts, and regression reports.</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="https://github.com/Jo2234/curio" target="_blank" rel="noopener">Curio</a><span class="sub">voice · reasoning agents</span></td>
+          <td><span class="badge code">CODE</span></td>
+          <td>Learning-by-teaching, instrumented: teach an AI novice by voice, agents map your claims against a curriculum, the novice teaches it back with your gaps exposed.</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="https://github.com/Jo2234/FluentAI" target="_blank" rel="noopener">FluentAI</a><span class="sub">evaluator/memory agents</span></td>
+          <td><span class="badge code">CODE</span></td>
+          <td>Agentic language tutor: adaptive lessons, real-time speech, spaced repetition driven by actual conversation mistakes. 30+ iterations of visible development.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="demo">
+      <div class="demo-head">
+        <h3>Exhibit A — run the risk engine from this page</h3>
+        <span class="src">POST portfolio-risk-copilot-pi.vercel.app/analyze</span>
+      </div>
+      <p class="exp">This isn't a screenshot. The button below sends a portfolio to the subject's deployed risk API and renders whatever it says — including when it disapproves of the concentration.</p>
+      <div class="demo-controls">
+        <button onclick="runDemo('balanced')">Analyze a balanced book</button>
+        <button class="ghost" onclick="runDemo('yolo')">Analyze 80% NVDA</button>
+      </div>
+      <div class="demo-out" id="demo-out"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span>Catalysts</span><span class="secno">§ 3</span></h2>
+    <div class="prose">
+      <p>Near-term: one flagship system built in public over eight weeks — current candidates are an event-driven backtesting engine with an automated look-ahead-bias test suite, and an MCP risk server exposing the risk engine to any AI agent. Ongoing: new diagnostics land in finance-labs (ten and counting), and every deployment on this page auto-ships from <span style="font-family:var(--mono); font-size:0.9em">git push</span>.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span>Risk factors</span><span class="secno">§ 4</span></h2>
+    <ul class="risks">
+      <li>Subject is a student; production experience is self-inflicted rather than employer-supervised. <i>Mitigant: the systems are, in fact, in production.</i></li>
+      <li>Backtests and demos on this page are research artifacts, not investment advice; no returns are claimed anywhere. <i>The analyst considers this a feature.</i></li>
+      <li>Coverage universe is early-stage: histories are months, not years. <i>Mitigant: velocity — the gallery, monorepo, and this note itself shipped inside a single week.</i></li>
+      <li>Enthusiasm for automation may result in your workflows getting quietly improved. <i>No mitigant available.</i></li>
+    </ul>
+  </section>
+
+  <div class="cert">
+    <h2>Analyst certification</h2>
+    <p>The analyst certifies that the views expressed in this note accurately reflect his own capabilities, that every system marked LIVE is genuinely deployed and was verified working before publication, and that no language model was permitted to invent a number on this page — the live ones come from the APIs.</p>
+    <div class="sig">Johan Vaz</div>
+    <div class="contact-row">
+      <a href="mailto:v.johan2234@gmail.com">Email the analyst</a>
+      <a class="ghost" href="https://github.com/Jo2234" target="_blank" rel="noopener">GitHub</a>
+      <a class="ghost" href="https://sg.linkedin.com/in/johan-vaz" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
-</nav>
 
-<header class="wrap">
-  <div class="kicker">AI × Finance · Singapore</div>
-  <h1>I build AI systems that<br>financial workflows can <span class="dim">actually trust.</span></h1>
-  <p class="lede">
-    I'm <strong>Johan Vaz</strong> — Computer Science &amp; Quantitative Finance at NUS.
-    I turn messy research and risk workflows into <strong>source-grounded, evaluated, inspectable tools</strong>:
-    LLM eval harnesses, cited retrieval over SEC filings, and portfolio risk engines that explain themselves.
-  </p>
-  <div class="cta-row">
-    <a class="btn btn-primary" href="#work">See the work ↓</a>
-    <a class="btn btn-ghost" href="https://github.com/Jo2234" target="_blank" rel="noopener">GitHub</a>
-    <a class="btn btn-ghost" href="https://sg.linkedin.com/in/johan-vaz" target="_blank" rel="noopener">LinkedIn</a>
-  </div>
-</header>
-
-<div class="strip">
-  <div class="wrap strip-inner">
-    <span><b>evals</b> — 50-case financial QA harness</span>
-    <span><b>retrieval</b> — chunk-level SEC citations</span>
-    <span><b>risk</b> — VaR · ES · stress tests</span>
-    <span><b>agents</b> — evaluator/memory loops</span>
-  </div>
-</div>
-
-<section id="work" class="wrap">
-  <div class="sec-label">01 / SELECTED WORK</div>
-  <h2>Projects</h2>
-  <p class="sec-sub">
-    A deliberately short list. Each one exists to prove a specific thing:
-    that grounding, evaluation, and failure-mode testing beat impressive demos.
-  </p>
-  <div class="grid">
-
-    <a class="card flagship" href="https://github.com/Jo2234/ai-equity-research-copilot" target="_blank" rel="noopener">
-      <div class="flag-badge">FLAGSHIP</div>
-      <div class="card-top"><div class="card-title">AI Equity Research Copilot</div><div class="card-arrow">↗</div></div>
-      <div class="card-desc">
-        Document-grounded research assistant over SEC filings. EDGAR ingestion, chunk-level
-        cited retrieval, structured memos, company comparisons — and a finance QA eval set
-        so citation precision, refusals, and hallucination risk are tested, not hand-waved.
-      </div>
-      <div class="tags"><span class="tag">RAG</span><span class="tag">SEC EDGAR</span><span class="tag">FastAPI</span><span class="tag">evals</span></div>
-    </a>
-
-    <a class="card" href="https://github.com/Jo2234/financial-llm-eval-harness" target="_blank" rel="noopener">
-      <div class="card-top"><div class="card-title">Financial LLM Eval Harness</div><div class="card-arrow">↗</div></div>
-      <div class="card-desc">
-        A 50-case evaluation suite for financial QA systems: factual extraction, cited
-        summaries, multi-document synthesis, refusal behavior, adversarial prompts —
-        with scoring, regression reports, and repeatable comparisons.
-      </div>
-      <div class="tags"><span class="tag">LLM evals</span><span class="tag">scoring</span><span class="tag">regression</span></div>
-    </a>
-
-    <a class="card" href="https://github.com/Jo2234/FluentAI" target="_blank" rel="noopener">
-      <div class="card-top"><div class="card-title">FluentAI</div><div class="card-arrow">↗</div></div>
-      <div class="card-desc">
-        Agentic language tutor with adaptive lessons, evaluator and memory agents,
-        real-time speech, and spaced-repetition driven by actual conversation mistakes.
-        Built and iterated across 30+ releases.
-      </div>
-      <div class="tags"><span class="tag">agents</span><span class="tag">realtime voice</span><span class="tag">memory</span></div>
-    </a>
-
-    <a class="card" href="https://github.com/Jo2234/curio" target="_blank" rel="noopener">
-      <div class="card-top"><div class="card-title">Curio</div><div class="card-arrow">↗</div></div>
-      <div class="card-desc">
-        Learning-by-teaching, instrumented: teach an AI novice by voice, let reasoning
-        agents map your claims against a curriculum, then hear the novice teach it back
-        using only what it learned from you. Evidence-led gap detection, not scores.
-      </div>
-      <div class="tags"><span class="tag">reasoning agents</span><span class="tag">voice</span><span class="tag">TypeScript</span></div>
-    </a>
-
-    <a class="card" href="https://market-regime-dashboard-mu.vercel.app" target="_blank" rel="noopener">
-      <div class="live-badge">LIVE</div>
-      <div class="card-top"><div class="card-title">US Market Regime Dashboard</div><div class="card-arrow">↗</div></div>
-      <div class="card-desc">
-        Macro and risk context in one place: indices, sectors, rates, volatility, and
-        commodities with transparent regime rules, data-freshness checks, and exports.
-        FastAPI + React. Click through — it's running.
-      </div>
-      <div class="tags"><span class="tag">live demo</span><span class="tag">macro</span><span class="tag">FastAPI</span><span class="tag">React</span></div>
-    </a>
-
-    <a class="card" href="https://portfolio-risk-copilot-pi.vercel.app" target="_blank" rel="noopener">
-      <div class="live-badge">LIVE</div>
-      <div class="card-top"><div class="card-title">Portfolio Risk Copilot</div><div class="card-arrow">↗</div></div>
-      <div class="card-desc">
-        API-first portfolio risk: VaR, expected shortfall, correlations, concentration
-        flags, and stress tests — with plain-English risk commentary designed to be
-        read by a human who has to make a decision. Try it with your own portfolio.
-      </div>
-      <div class="tags"><span class="tag">live demo</span><span class="tag">risk</span><span class="tag">VaR / ES</span><span class="tag">stress tests</span></div>
-    </a>
-
-    <a class="card" href="https://finance-labs-showcase.vercel.app" target="_blank" rel="noopener">
-      <div class="live-badge">LIVE</div>
-      <div class="card-top"><div class="card-title">finance-labs</div><div class="card-arrow">↗</div></div>
-      <div class="card-desc">
-        Nine small, offline, test-covered risk diagnostics — margin cascades, ETF
-        liquidity stress, option skew, factor crowding, covenant headroom — with a
-        results gallery showing each tool's real output on example data.
-      </div>
-      <div class="tags"><span class="tag">live results</span><span class="tag">risk toolkit</span><span class="tag">Python</span></div>
-    </a>
-
-    <a class="card" href="https://github.com/Jo2234/iGhost" target="_blank" rel="noopener">
-      <div class="card-top"><div class="card-title">iGhost</div><div class="card-arrow">↗</div></div>
-      <div class="card-desc">
-        AI usability lab that turns website tasks into narrated synthetic-user
-        walkthroughs — product critiques, voiceover, and browser automation that
-        watches software the way a confused first-time user would.
-      </div>
-      <div class="tags"><span class="tag">browser automation</span><span class="tag">UX</span><span class="tag">JavaScript</span></div>
-    </a>
-
-  </div>
-</section>
-
-<section id="approach" class="wrap">
-  <div class="sec-label">02 / HOW I WORK</div>
-  <h2>Approach</h2>
-  <p class="sec-sub">The thesis behind everything above:</p>
-  <div class="approach">
-    <div class="principle">
-      <h3>Grounded, or it doesn't ship</h3>
-      <p>Every generated claim traces to a source chunk. When evidence is weak, the system says so — refusal behavior is a feature, tested like one.</p>
-    </div>
-    <div class="principle">
-      <h3>Evaluated, not vibe-checked</h3>
-      <p>If answer quality isn't measured, it's marketing. I build the eval harness before I trust the output — golden sets, regression scoring, adversarial cases.</p>
-    </div>
-    <div class="principle">
-      <h3>Honest about failure modes</h3>
-      <p>Finance punishes overconfidence. I document where tools break, what they must not do, and the biases that make backtests and benchmarks lie.</p>
-    </div>
-  </div>
-</section>
-
-<section id="about" class="wrap">
-  <div class="sec-label">03 / ABOUT</div>
-  <h2>About</h2>
-  <div class="about-flex">
-    <div class="about-text">
-      <p>
-        I study <strong>Computer Science and Quantitative Finance at the National University
-        of Singapore</strong>. The overlap is the point: I'm most useful where a team needs
-        someone who can read a 10-K <em>and</em> ship the pipeline that parses it.
-      </p>
-      <p>
-        Right now I'm focused on <strong>LLM evaluation and source-grounded retrieval for
-        financial research</strong> — the unglamorous machinery that decides whether an AI
-        research tool is trustworthy or just fluent.
-      </p>
-      <p>
-        <strong>Looking for:</strong> internships or junior roles in AI agents, LLM evaluation,
-        fintech, or quant research tooling — ideally on a small team that ships.
-      </p>
-    </div>
-    <dl class="fact-box">
-      <dt>Location</dt><dd>Singapore</dd>
-      <dt>Education</dt><dd>NUS — CS + Quantitative Finance</dd>
-      <dt>Focus</dt><dd>LLM evals · RAG · market &amp; risk tooling</dd>
-      <dt>Stack</dt><dd>Python · TypeScript · FastAPI · React</dd>
-      <dt>Status</dt><dd><span style="color:var(--accent)">●</span> open to opportunities</dd>
-    </dl>
-  </div>
-</section>
-
-<section id="contact" class="wrap">
-  <div class="contact-card">
-    <h2>Building AI for research, finance, or ops?</h2>
-    <p>I'd be glad to compare notes — or help ship. The fastest way to evaluate me is to read the code and the eval reports.</p>
-    <div class="cta-row" style="justify-content:center">
-      <a class="btn btn-primary" href="mailto:v.johan2234@gmail.com">Email me</a>
-      <a class="btn btn-ghost" href="https://github.com/Jo2234" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn btn-ghost" href="https://sg.linkedin.com/in/johan-vaz" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
   <footer>
-    <span>© 2026 Johan Vaz</span>
-    <span><a href="https://github.com/Jo2234" target="_blank" rel="noopener">github.com/Jo2234</a></span>
+    <span>© 2026 Johan Vaz · Not investment advice</span>
+    <span><a href="https://github.com/Jo2234/johan-vaz-site" target="_blank" rel="noopener">Source of this note ↗</a></span>
   </footer>
 </div>
 
+<script>
+  // Date line
+  document.getElementById('note-date').textContent = new Date().toLocaleDateString('en-SG', { day: 'numeric', month: 'long', year: 'numeric' });
+
+  // Live regime tape — reads the subject's own deployed API
+  (async () => {
+    const el = document.getElementById('tape-text');
+    try {
+      const r = await fetch('https://market-regime-dashboard-mu.vercel.app/api/dashboard/summary', { signal: AbortSignal.timeout(8000) });
+      const d = await r.json();
+      const label = (d.regime && d.regime.regime_label ? d.regime.regime_label : 'unknown').replace(/_/g, ' ').toUpperCase();
+      const conf = d.regime && d.regime.confidence ? d.regime.confidence : '—';
+      el.innerHTML = 'US market regime right now, per the subject’s own dashboard: <b>' + label + '</b> (confidence: ' + conf + ', as of ' + (d.as_of || 'today') + ') · <a href="https://market-regime-dashboard-mu.vercel.app" target="_blank" rel="noopener">see the full dashboard ↗</a>';
+    } catch (e) {
+      el.innerHTML = 'Live regime feed unreachable from your network — inspect it directly: <a href="https://market-regime-dashboard-mu.vercel.app" target="_blank" rel="noopener">market-regime-dashboard ↗</a>';
+    }
+  })();
+
+  // Exhibit A — live risk engine demo
+  const BOOKS = {
+    balanced: { label: 'balanced book (25% NVDA / 25% MSFT / 25% JPM / 25% XOM)',
+      holdings: [ {ticker:'NVDA',weight:0.25}, {ticker:'MSFT',weight:0.25}, {ticker:'JPM',weight:0.25}, {ticker:'XOM',weight:0.25} ] },
+    yolo: { label: 'concentrated book (80% NVDA / 20% MSFT)',
+      holdings: [ {ticker:'NVDA',weight:0.8}, {ticker:'MSFT',weight:0.2} ] }
+  };
+  async function runDemo(kind) {
+    const out = document.getElementById('demo-out');
+    const book = BOOKS[kind];
+    out.textContent = 'Sending ' + book.label + ' to the live API…';
+    try {
+      const r = await fetch('https://portfolio-risk-copilot-pi.vercel.app/analyze', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ holdings: book.holdings }),
+        signal: AbortSignal.timeout(20000)
+      });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const d = await r.json();
+      const m = d.metrics || {};
+      const pct = v => (typeof v === 'number' ? (v * 100).toFixed(2) + '%' : '—');
+      const score = typeof d.risk_score === 'number' ? d.risk_score : '—';
+      out.innerHTML =
+        '<b>Live response</b> (' + book.label + '):\n' +
+        'Risk score: <span class="' + (score >= 70 ? 'risk-hi' : '') + '">' + score + '/100</span>\n' +
+        'Annualized volatility: <b>' + pct(m.volatility) + '</b>   ·   VaR 95% (daily): <b>' + pct(m.value_at_risk_95) + '</b>   ·   Expected shortfall: <b>' + pct(m.expected_shortfall_95) + '</b>\n\n' +
+        '“' + (d.summary || 'No commentary returned.') + '”';
+    } catch (e) {
+      out.innerHTML = 'The live API didn’t answer from your network (' + e.message + ') — try it directly: <a href="https://portfolio-risk-copilot-pi.vercel.app" target="_blank" rel="noopener">portfolio-risk-copilot ↗</a>';
+    }
+  }
+</script>
 </body>
 </html>
