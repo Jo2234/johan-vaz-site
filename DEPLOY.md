@@ -1,5 +1,8 @@
 # Deploying this site to Vercel
 
+> **Status: connected.** Pushes to `main` auto-deploy via the Vercel GitHub App.
+> Everything below is kept for reference / re-setup.
+
 This is a zero-build static site — one `index.html`, no dependencies, no framework.
 That makes deployment trivial. Three options, easiest first.
 
