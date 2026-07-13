@@ -133,6 +133,14 @@
     background: var(--accent); color: #08130c; font-weight: 700;
     padding: 2px 10px; border-radius: 99px;
   }
+  .live-badge {
+    position: absolute; top: -10px; left: 16px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
+    background: #0c2517; color: var(--accent); font-weight: 700;
+    border: 1px solid var(--accent);
+    padding: 2px 10px; border-radius: 99px;
+  }
+  .live-badge::before { content: "● "; }
 
   /* ---------- Approach ---------- */
   .approach { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -263,24 +271,47 @@
       <div class="tags"><span class="tag">reasoning agents</span><span class="tag">voice</span><span class="tag">TypeScript</span></div>
     </a>
 
-    <a class="card" href="https://github.com/Jo2234/us-market-regime-dashboard" target="_blank" rel="noopener">
+    <a class="card" href="https://market-regime-dashboard-mu.vercel.app" target="_blank" rel="noopener">
+      <div class="live-badge">LIVE</div>
       <div class="card-top"><div class="card-title">US Market Regime Dashboard</div><div class="card-arrow">↗</div></div>
       <div class="card-desc">
         Macro and risk context in one place: indices, sectors, rates, volatility, and
         commodities with transparent regime rules, data-freshness checks, and exports.
-        FastAPI + React.
+        FastAPI + React. Click through — it's running.
       </div>
-      <div class="tags"><span class="tag">macro</span><span class="tag">FastAPI</span><span class="tag">React</span></div>
+      <div class="tags"><span class="tag">live demo</span><span class="tag">macro</span><span class="tag">FastAPI</span><span class="tag">React</span></div>
     </a>
 
-    <a class="card" href="https://github.com/Jo2234/portfolio-risk-copilot" target="_blank" rel="noopener">
+    <a class="card" href="https://portfolio-risk-copilot-pi.vercel.app" target="_blank" rel="noopener">
+      <div class="live-badge">LIVE</div>
       <div class="card-top"><div class="card-title">Portfolio Risk Copilot</div><div class="card-arrow">↗</div></div>
       <div class="card-desc">
         API-first portfolio risk: VaR, expected shortfall, correlations, concentration
         flags, and stress tests — with plain-English risk commentary designed to be
-        read by a human who has to make a decision.
+        read by a human who has to make a decision. Try it with your own portfolio.
       </div>
-      <div class="tags"><span class="tag">risk</span><span class="tag">VaR / ES</span><span class="tag">stress tests</span></div>
+      <div class="tags"><span class="tag">live demo</span><span class="tag">risk</span><span class="tag">VaR / ES</span><span class="tag">stress tests</span></div>
+    </a>
+
+    <a class="card" href="https://finance-labs-showcase.vercel.app" target="_blank" rel="noopener">
+      <div class="live-badge">LIVE</div>
+      <div class="card-top"><div class="card-title">finance-labs</div><div class="card-arrow">↗</div></div>
+      <div class="card-desc">
+        Nine small, offline, test-covered risk diagnostics — margin cascades, ETF
+        liquidity stress, option skew, factor crowding, covenant headroom — with a
+        results gallery showing each tool's real output on example data.
+      </div>
+      <div class="tags"><span class="tag">live results</span><span class="tag">risk toolkit</span><span class="tag">Python</span></div>
+    </a>
+
+    <a class="card" href="https://github.com/Jo2234/iGhost" target="_blank" rel="noopener">
+      <div class="card-top"><div class="card-title">iGhost</div><div class="card-arrow">↗</div></div>
+      <div class="card-desc">
+        AI usability lab that turns website tasks into narrated synthetic-user
+        walkthroughs — product critiques, voiceover, and browser automation that
+        watches software the way a confused first-time user would.
+      </div>
+      <div class="tags"><span class="tag">browser automation</span><span class="tag">UX</span><span class="tag">JavaScript</span></div>
     </a>
 
   </div>
