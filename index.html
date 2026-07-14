@@ -203,6 +203,50 @@
     text-transform: uppercase; letter-spacing: 0.08em;
   }
   footer a { color: var(--ink-soft); text-decoration: none; }
+
+  /* ---------- Motion layer ---------- */
+  .ticker {
+    border-bottom: 1px solid var(--rule); overflow: hidden; white-space: nowrap;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em;
+    color: var(--ink-soft); padding: 8px 0; position: relative;
+  }
+  .ticker-track { display: inline-block; animation: tickerscroll 40s linear infinite; }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  .ticker b { color: var(--up); font-weight: 700; }
+  .ticker .sep { color: var(--ink-faint); margin: 0 14px; }
+  @keyframes tickerscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  .hero-chart { display: block; width: 100%; height: 110px; margin-top: 26px; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  .badge.live { animation: badgepulse 2.4s ease-in-out infinite; }
+  @keyframes badgepulse { 50% { box-shadow: 0 0 0 4px rgba(29,107,69,0.12); } }
+
+  table.coverage tbody tr { transition: background .15s; }
+  table.coverage tbody tr:hover { background: var(--accent-bg); }
+
+  .stamp { transition: transform .2s ease; cursor: default; }
+  .stamp:hover { transform: rotate(-3deg) scale(1.06); }
+
+  .demo-out.terminal {
+    background: #101413; color: #c9e8d4; border: 1px solid #2c3a32;
+    border-radius: 6px; padding: 16px 18px; margin-top: 16px;
+    box-shadow: inset 0 2px 12px rgba(0,0,0,0.35);
+  }
+  .demo-out.terminal b { color: #eafff2; }
+  .demo-out.terminal .risk-hi { color: #ff9a8a; }
+  .demo-out.terminal a { color: #7fd6a4; }
+  .cursor { display: inline-block; width: 8px; height: 14px; background: #7fd6a4;
+    vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .badge.live, .tape .live-dot, .cursor { animation: none; }
+  }
 </style>
 </head>
 <body>
@@ -217,11 +261,15 @@
     <span id="note-date">2026</span>
     <span>Distribution: unrestricted</span>
   </div>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker-track">
+    <span>EQUITY-RESEARCH-COPILOT <b>● LIVE</b><span class="sep">/</span>MARKET-REGIME-DASHBOARD <b>● LIVE</b><span class="sep">/</span>PORTFOLIO-RISK-COPILOT <b>● LIVE</b><span class="sep">/</span>FINANCE-LABS ×10 <b>CI ✓</b><span class="sep">/</span>EVAL-HARNESS 50 CASES <b>PUBLISHED</b><span class="sep">/</span>PERSONAL-SITE <b>● YOU ARE HERE</b><span class="sep">/</span></span>
+  </div></div>
 
   <div class="title-block">
     <div class="stamp">STRONG BUY</div>
     <h1>Johan Vaz <span class="tick">JVAZ:SG</span></h1>
     <p class="subtitle">CS + quantitative finance at NUS. Builds AI systems for markets — research copilots, risk engines, eval harnesses. The claims in this note aren't adjectives; they're deployments you can click.</p>
+    <canvas class="hero-chart" id="hero-chart" aria-hidden="true"></canvas>
   </div>
 
   <dl class="statbox">
@@ -235,7 +283,7 @@
     <span id="tape-text">Connecting to JVAZ's own market-regime API…</span>
   </div>
 
-  <section>
+  <section class="reveal">
     <h2><span>Investment thesis</span><span class="secno">§ 1</span></h2>
     <ol class="thesis">
       <li><b>Ships whole systems, not snippets.</b> Six of the projects below are live in production right now — ingestion, API, frontend, deploys. You can break them yourself; the links are right there.</li>
@@ -244,7 +292,7 @@
     </ol>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2><span>Coverage universe</span><span class="secno">§ 2</span></h2>
     <div class="cov-scroll">
     <table class="coverage">
@@ -299,18 +347,18 @@
         <button onclick="runDemo('balanced')">Analyze a balanced book</button>
         <button class="ghost" onclick="runDemo('yolo')">Analyze 80% NVDA</button>
       </div>
-      <div class="demo-out" id="demo-out"></div>
+      <div class="demo-out terminal" id="demo-out">$ risk-engine ready — pick a book above <span class="cursor"></span></div>
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2><span>Catalysts</span><span class="secno">§ 3</span></h2>
     <div class="prose">
       <p>Near-term: one flagship system built in public over eight weeks — current candidates are an event-driven backtesting engine with an automated look-ahead-bias test suite, and an MCP risk server exposing the risk engine to any AI agent. Ongoing: new diagnostics land in finance-labs (ten and counting), and every deployment on this page auto-ships from <span style="font-family:var(--mono); font-size:0.9em">git push</span>.</p>
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2><span>Risk factors</span><span class="secno">§ 4</span></h2>
     <ul class="risks">
       <li>Subject is a student; production experience is self-inflicted rather than employer-supervised. <i>Mitigant: the systems are, in fact, in production.</i></li>
@@ -320,7 +368,7 @@
     </ul>
   </section>
 
-  <div class="cert">
+  <div class="cert reveal">
     <h2>Analyst certification</h2>
     <p>The analyst certifies that the views expressed in this note accurately reflect his own capabilities, that every system marked LIVE is genuinely deployed and was verified working before publication, and that no language model was permitted to invent a number on this page — the live ones come from the APIs.</p>
     <div class="sig">Johan Vaz</div>
@@ -386,6 +434,81 @@
       out.innerHTML = 'The live API didn’t answer from your network (' + e.message + ') — try it directly: <a href="https://portfolio-risk-copilot-pi.vercel.app" target="_blank" rel="noopener">portfolio-risk-copilot ↗</a>';
     }
   }
+
+  // Scroll reveals
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Hero chart — a price path drawing itself. Seeded so it always ends up and to the right.
+  (function heroChart() {
+    const cv = document.getElementById('hero-chart');
+    if (!cv || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (cv) cv.style.display = 'none';
+      return;
+    }
+    const ctx = cv.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    let W, H, path;
+
+    function css(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+    function build() {
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = W * dpr; cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // Deterministic-ish random walk with upward drift, mild vol clustering
+      let seed = 20260713;
+      const rnd = () => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648 - 0.5; };
+      const n = Math.max(140, Math.floor(W / 5));
+      path = []; let p = H * 0.72, vol = 1;
+      for (let i = 0; i < n; i++) {
+        vol = Math.max(0.5, Math.min(2.2, vol + rnd() * 0.35));
+        p += rnd() * 7 * vol - H * 0.0016 * i / n * 14;   // shocks + gentle drift up
+        p = Math.max(H * 0.12, Math.min(H * 0.92, p));
+        path.push([i / (n - 1) * W, p]);
+      }
+      path[n - 1][1] = Math.min(path[n - 1][1], H * 0.3); // end optimistic
+    }
+
+    let t0 = null;
+    function draw(ts) {
+      if (!t0) t0 = ts;
+      const prog = Math.min(1, (ts - t0) / 3800);
+      const ease = 1 - Math.pow(1 - prog, 3);
+      const upto = Math.max(2, Math.floor(path.length * ease));
+      ctx.clearRect(0, 0, W, H);
+      // faint grid
+      ctx.strokeStyle = css('--rule'); ctx.lineWidth = 0.5; ctx.globalAlpha = 0.6;
+      for (let y = H * 0.2; y < H; y += H * 0.2) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+      ctx.globalAlpha = 1;
+      // area fill under drawn path
+      ctx.beginPath(); ctx.moveTo(path[0][0], path[0][1]);
+      for (let i = 1; i < upto; i++) ctx.lineTo(path[i][0], path[i][1]);
+      const last = path[upto - 1];
+      ctx.lineTo(last[0], H); ctx.lineTo(path[0][0], H); ctx.closePath();
+      ctx.fillStyle = css('--up'); ctx.globalAlpha = 0.07; ctx.fill(); ctx.globalAlpha = 1;
+      // the line
+      ctx.beginPath(); ctx.moveTo(path[0][0], path[0][1]);
+      for (let i = 1; i < upto; i++) ctx.lineTo(path[i][0], path[i][1]);
+      ctx.strokeStyle = css('--up'); ctx.lineWidth = 1.6; ctx.stroke();
+      // live tip dot
+      ctx.beginPath(); ctx.arc(last[0], last[1], 3, 0, Math.PI * 2);
+      ctx.fillStyle = css('--up'); ctx.fill();
+      // label at the end
+      if (prog === 1) {
+        ctx.font = '10px ' + css('--mono').split(',')[0].replace(/"/g, '') + ', monospace';
+        ctx.fillStyle = css('--ink-faint');
+        ctx.textAlign = 'right';
+        ctx.fillText('JVAZ (indexed, not to scale — obviously)', W - 4, 12);
+      }
+      if (prog < 1) requestAnimationFrame(draw);
+    }
+    build();
+    requestAnimationFrame(draw);
+    let rsz; window.addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(() => { build(); t0 = null; requestAnimationFrame(draw); }, 150); });
+  })();
 </script>
 </body>
 </html>
