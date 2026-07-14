@@ -266,7 +266,7 @@
   </div></div>
 
   <div class="title-block">
-    <div class="stamp">STRONG BUY</div>
+    <div class="stamp">STRONG HIRE</div>
     <h1>Johan Vaz <span class="tick">JVAZ:SG</span></h1>
     <p class="subtitle">CS + quantitative finance at NUS. Builds AI systems for markets — research copilots, risk engines, eval harnesses. The claims in this note aren't adjectives; they're deployments you can click.</p>
     <canvas class="hero-chart" id="hero-chart" aria-hidden="true"></canvas>
@@ -286,7 +286,7 @@
   <section class="reveal">
     <h2><span>Investment thesis</span><span class="secno">§ 1</span></h2>
     <ol class="thesis">
-      <li><b>Ships whole systems, not snippets.</b> Six of the projects below are live in production right now — ingestion, API, frontend, deploys. You can break them yourself; the links are right there.</li>
+      <li><b>Ships whole systems, not snippets.</b> Six of the projects below are live in production — ingestion, API, frontend, and deployment, end to end. Each one is linked and can be inspected directly.</li>
       <li><b>Treats trust as an engineering problem.</b> Chunk-level citations, refusal behavior tested like a feature, eval suites written before the demo. AI that sounds right is cheap; AI that can show its receipts is the scarce asset.</li>
       <li><b>Reads the 10-K and writes the parser.</b> The tools mirror how analysts actually work — risk decomposition, regime context, covenant headroom — because the builder studies the finance, not just the framework.</li>
     </ol>
@@ -364,7 +364,7 @@
       <li>Subject is a student; production experience is self-inflicted rather than employer-supervised. <i>Mitigant: the systems are, in fact, in production.</i></li>
       <li>Backtests and demos on this page are research artifacts, not investment advice; no returns are claimed anywhere. <i>The analyst considers this a feature.</i></li>
       <li>Coverage universe is early-stage: histories are months, not years. <i>Mitigant: velocity — the gallery, monorepo, and this note itself shipped inside a single week.</i></li>
-      <li>Enthusiasm for automation may result in your workflows getting quietly improved. <i>No mitigant available.</i></li>
+      <li>Strong preference for automating repetitive workflows. <i>Considered a risk only by the repetitive workflows.</i></li>
     </ul>
   </section>
 
@@ -501,7 +501,7 @@
         ctx.font = '10px ' + css('--mono').split(',')[0].replace(/"/g, '') + ', monospace';
         ctx.fillStyle = css('--ink-faint');
         ctx.textAlign = 'right';
-        ctx.fillText('JVAZ (indexed, not to scale — obviously)', W - 4, 12);
+        ctx.fillText('JVAZ (indexed)', W - 4, 12);
       }
       if (prog < 1) requestAnimationFrame(draw);
     }
