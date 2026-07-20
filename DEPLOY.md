@@ -1,82 +1,51 @@
-# Deploying this site to Vercel
+# Deploying the portfolio to Vercel
 
-> **Status: connected.** Pushes to `main` auto-deploy via the Vercel GitHub App.
-> Everything below is kept for reference / re-setup.
+> **Production is connected.** Pushes to `main` auto-deploy through the existing Vercel Git integration.
 
-This is a zero-build static site — one `index.html`, no dependencies, no framework.
-That makes deployment trivial. Three options, easiest first.
+## Architecture
 
----
+The site is dependency-free and zero-build:
 
-## Option A — Drag and drop (60 seconds, no terminal)
+- `index.html` — semantic content and metadata
+- `styles.css` — visual system and responsive layout
+- `script.js` — progressive interactions
+- `assets/` — favicon and social preview
+- `vercel.json` — security and caching headers
 
-1. Go to <https://vercel.com/new> and log in (use "Continue with GitHub" → Jo2234).
-2. Drag the entire `johan-site` folder onto the upload area
-   (or click "Browse" and select the folder).
-3. Vercel detects it as a static site. Click **Deploy**.
-4. Done — you get a URL like `johan-site.vercel.app`.
+Vercel framework preset: **Other**. There is no install command, build command, or output directory.
 
-## Option B — Vercel CLI (best for quick redeploys)
+## Approval-gated release flow
 
-```bash
-cd johan-site
-npx vercel          # first run: log in, accept defaults, deploy to preview
-npx vercel --prod   # promote to production URL
-```
+Do not push a branch or run `vercel` commands until the local build has been reviewed and explicit deployment approval has been given. A branch push may create a public Vercel preview.
 
-When it asks questions, the defaults are all correct:
-- Set up and deploy? → Y
-- Which scope? → your account
-- Link to existing project? → N
-- Project name? → johan-site (or whatever you like)
-- In which directory is your code? → ./
-- Modify settings? → N (there is no build step)
+1. Work and test on a local feature branch.
+2. Review local desktop/mobile screenshots, interactions, links, metadata, and accessibility checks.
+3. Ask for approval to create a Vercel preview.
+4. After approval, push only the feature branch and review the generated preview URL.
+5. Ask separately for production-deployment approval.
+6. Only after production approval, merge into `main` and push `origin/main`.
+7. Verify the production URL, social image, security headers, anchor navigation, and external links.
 
-Every future update: edit `index.html`, then `npx vercel --prod` again.
+The existing Git integration should be used rather than creating a duplicate Vercel project with the CLI.
 
-## Option C — GitHub-connected (recommended long-term)
+## Local preview
 
-This gives you automatic deploys on every push, which is the professional setup:
+Serve the directory with any static server, for example:
 
 ```bash
-cd johan-site
-git init && git add -A && git commit -m "Personal site"
-gh repo create johan-vaz-site --public --source=. --push
+python3 -m http.server 4173 --directory .
 ```
 
-Then on <https://vercel.com/new>: **Import** the `johan-vaz-site` repo → Deploy.
-From then on, `git push` = live site update. No build settings needed
-(Framework Preset: "Other", no build command, output directory: leave blank).
+Then open <http://localhost:4173>.
 
----
+Opening `index.html` directly also works because CSS and JavaScript use relative paths.
 
-## Custom domain (optional but worth it)
+## Post-release checklist
 
-1. Buy `johanvaz.com` / `johanvaz.dev` (~US$10–12/yr on Namecheap, Porkbun, or Vercel itself).
-2. Vercel dashboard → your project → **Settings → Domains** → add the domain.
-3. Follow the DNS instructions it shows (usually just an A record or nameserver change).
-4. HTTPS is automatic.
-
-A custom domain on your resume/GitHub profile reads far better than `*.vercel.app`.
-
----
-
-## After it's live — checklist
-
-- [ ] Add the URL to your GitHub profile (github.com/Jo2234 → Edit profile → Website).
-- [ ] Add it to your LinkedIn header and your resume.
-- [ ] Update the "Featured builds" table in your profile README to link to the site.
-- [ ] The email address (v.johan2234@gmail.com) is in the Contact section — if you'd
-      rather not expose it to scrapers, delete the mailto button in `index.html`
-      (search for `mailto:`) and rely on LinkedIn instead.
-
-## Editing notes
-
-- Everything is in `index.html` — styles are embedded in the `<style>` block, content
-  is plain HTML below it. No build step means no tooling can break.
-- Colors live in the `:root` CSS variables at the top (`--accent` is the green).
-- Project cards are in the `<section id="work">` block — copy a `<a class="card">`
-  block to add one, delete to remove. Keep it at 4–6 cards; curation is the message.
-- When you deploy a live project (e.g., the regime dashboard), change that card's
-  link from the GitHub repo to the live URL and add a "LIVE" badge — swap the
-  `flag-badge` markup from the flagship card.
+- [ ] Confirm `https://johan-vaz-site.vercel.app/` loads without console errors.
+- [ ] Check the four interactive project previews by keyboard and pointer.
+- [ ] Check 390px mobile, tablet, and desktop layouts.
+- [ ] Confirm the Open Graph image resolves at `/assets/johan-vaz-og.png`.
+- [ ] Confirm `robots.txt` and `sitemap.xml` resolve.
+- [ ] Confirm CSP and other response headers in browser developer tools.
+- [ ] Add the final URL to the résumé, GitHub profile, and LinkedIn featured section.
