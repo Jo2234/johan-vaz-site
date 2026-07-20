@@ -42,7 +42,7 @@ Opening `index.html` directly also works because CSS and JavaScript use relative
 
 ## Post-release checklist
 
-- [ ] Confirm `https://johan-vaz-site.vercel.app/` loads without console errors.
+- [ ] Confirm `https://johanvaz.vercel.app/` loads without console errors.
 - [ ] Check the four interactive project previews by keyboard and pointer.
 - [ ] Check 390px mobile, tablet, and desktop layouts.
 - [ ] Confirm the Open Graph image resolves at `/assets/johan-vaz-og.png`.
