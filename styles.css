@@ -452,7 +452,7 @@ h2 {
 
 .tool-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
@@ -518,52 +518,74 @@ h2 {
   font-size: 27px;
 }
 
-.recording-list {
-  border-top: 1px solid var(--line);
-}
-
-.recording {
+/* Native video controls keep the walkthroughs usable without JavaScript. */
+.walkthrough-grid {
   display: grid;
-  grid-template-columns: 30px 145px 1fr auto;
-  align-items: center;
-  gap: 16px;
-  min-height: 78px;
-  border-bottom: 1px solid var(--line);
-  transition: background .18s;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
 }
-
-.recording:hover {
-  background: #eceee6;
+.walkthrough-card {
+  min-width: 0;
 }
-
-.play-mark {
-  display: grid;
-  place-items: center;
-  width: 29px;
-  height: 29px;
-  padding-left: 2px;
+.walkthrough-card video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  background: #171916;
   border: 1px solid var(--line);
-  border-radius: 50%;
-  font-size: 8px;
-  color: var(--blue);
+  border-radius: 9px;
 }
-
-.recording-name {
-  font-size: 16px;
+.walkthrough-card video:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+}
+.walkthrough-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 17px;
+}
+.walkthrough-heading h3 {
+  font-size: 19px;
   font-weight: 500;
   letter-spacing: -.025em;
 }
-
-.recording-description {
-  font-size: 13px;
+.walkthrough-heading > span {
   color: var(--muted);
+  font-size: 10px;
+  white-space: nowrap;
 }
-
-.recording-action {
+.walkthrough-card > p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+.walkthrough-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 8px;
+}
+.walkthrough-links a {
   display: inline-flex;
-  gap: 24px;
+  align-items: center;
+  gap: 5px;
+  min-height: 44px;
+  color: var(--blue);
   font-size: 11px;
-  font-weight: 500;
+}
+.walkthrough-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.walkthrough-note {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 22px;
 }
 
 .about {
@@ -718,13 +740,7 @@ h2 {
   .tool-top .eyebrow {
     font-size: 8px;
   }
-  .recording {
-    grid-template-columns: 30px 110px 1fr auto;
-    gap: 12px;
-  }
-  .recording-action {
-    gap: 12px;
-  }
+
   .about-grid {
     gap: 40px;
     grid-template-columns: 1.2fr 1fr;
@@ -732,6 +748,13 @@ h2 {
 }
 
 @media (max-width: 700px) {
+  .walkthrough-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .walkthrough-card video {
+    aspect-ratio: 16 / 11;
+  }
   .wrap {
     width: calc(100% - 40px);
   }
@@ -875,23 +898,7 @@ h2 {
   .compact h2 {
     font-size: 26px;
   }
-  .recording {
-    grid-template-columns: 30px 1fr auto;
-    gap: 8px 12px;
-    padding-block: 18px;
-  }
-  .recording-description {
-    grid-column: 2 / -1;
-    grid-row: 2;
-    font-size: 11px;
-  }
-  .recording-name {
-    font-size: 16px;
-  }
-  .recording-action {
-    font-size: 9px;
-    gap: 7px;
-  }
+
   .about {
     padding-block: 46px 34px;
   }
@@ -949,12 +956,7 @@ h2 {
   .project-meta > span:last-child {
     text-align: left;
   }
-  .recording-action {
-    font-size: 0;
-  }
-  .recording-action span {
-    font-size: 15px;
-  }
+
   .about h2 {
     font-size: 34px;
   }
