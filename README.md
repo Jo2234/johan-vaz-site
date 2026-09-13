@@ -10,17 +10,19 @@ A small, static portfolio built around real project previews and direct links.
 python3 -m http.server 4173
 ```
 
-Open http://localhost:4173. No install step, build pipeline, web fonts, analytics, or client-side JavaScript is required.
+Open http://localhost:4173. No install step, build pipeline, web fonts, or analytics are required. Native video controls provide playback; a small script pauses other walkthroughs when one starts. Content and playback remain usable without JavaScript.
 
 ## Contents
 
 - `index.html`: project descriptions, links, contact information, and metadata.
 - `styles.css`: layout, responsive styles, keyboard focus, and reduced-motion support.
 - `assets/demos/`: compressed screenshots captured from the actual public projects on 13 September 2026.
-- `assets/portfolio-social.png`: social preview.
+- `assets/portfolio-social-v2.png`: social preview.
+- `assets/videos/`: narrated recordings, captions, transcripts, and poster images.
+- `media.js`: pauses the other walkthroughs when playback starts.
 - `vercel.json`: security and cache headers.
 
-The page links to nine live project sites and three recorded walkthroughs. Interactive demos, generated-data demos, reports, and early prototypes are labeled separately. The smaller audio landing prototype does not expose conversion controls; the evaluation report is a deterministic comparison without an LLM.
+The page links to eight live project sites and three narrated walkthroughs with native players, captions, and transcripts. Interactive demos, generated-data demos, reports, and early prototypes are labeled separately. The single retained audio converter exports real MP3/WAV files locally. The evaluation report is a deterministic comparison without an LLM.
 
 ## Updating projects
 

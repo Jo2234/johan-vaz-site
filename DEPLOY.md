@@ -28,5 +28,7 @@ If a manual deployment is necessary, link the checkout to the existing project, 
 - Confirm the homepage, stylesheet, six project previews, favicon, social image, robots file, and sitemap return successfully.
 - Confirm production desktop/mobile layouts and keyboard navigation.
 - Check security headers and browser console for CSP or resource errors.
-- Check the nine live project URLs and three recorded walkthrough links.
+- Check the eight live project URLs and three narrated video players, caption tracks, and downloads.
 - Compare the served HTML and assets with the merged revision.
+
+Verify that videos load only on demand, play with audible narration, expose captions, and pause each other when JavaScript is enabled.

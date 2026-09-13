@@ -1,0 +1,5 @@
+curio — narrated walkthrough
+
+Curio tests your explanations through a simulated learner. Choose a lesson on seasons. This offline demo uses scripted model responses. The session opens its concept map and evidence. A sample explanation wrongly blames summer on distance from the Sun. The claim ledger records the problem. The teacher corrects that claim, but leaves daylight unexplained. The map updates, and uncertainty stays visible. Finishing the session produces a teach-back from the recorded explanation. The report preserves what the learner understood, including the remaining gap. The learner account keeps that uncertainty visible. After a real server restart, the saved report reloads with no new model calls. A separate reference tab shows the complete explanation. Human review keeps the unresolved claim and its transcript evidence together. Finally, the original session reopens with its saved transcript. Voice would need reconnecting; earlier questions are not replayed.
+
+Narration added in post-production; model responses in the recording are scripted.

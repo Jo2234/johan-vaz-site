@@ -1,0 +1,5 @@
+iGhost — narrated walkthrough
+
+iGhost turns a website task into a usability walkthrough. This example uses a fictional local site and scripted model decisions. Mara is an impatient first-time visitor, checking whether she can try the product before paying. Generate walkthrough builds a playable replay from screenshots and cursor positions. On the homepage, Get started gives no clear promise of a free trial. It leads to two paid plans. The scripted visitor cannot find a trial. The suggested fixes: show the starting price earlier, and make the next step clear. The generated Codex prompt includes the task, recommendations, and replay evidence. We inspect the prompt here. Nothing is sent to GitHub. This connects a user task, recorded friction, and a concrete change request for review. The replay is a real app output. The visitor's judgments are scripted, so live model quality remains untested.
+
+Narration added in post-production; model responses in the recording are scripted.
