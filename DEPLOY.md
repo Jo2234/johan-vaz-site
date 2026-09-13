@@ -1,51 +1,32 @@
-# Deploying the portfolio to Vercel
+# Deploying the portfolio
 
-> **Production is connected.** Pushes to `main` auto-deploy through the existing Vercel Git integration.
+Production: **https://johan-vaz-site.vercel.app**
+
+Use the existing Vercel project `johan-vaz-site` in `johans-projects-b72145b2`. The Git integration deploys changes to `main`; do not create a duplicate project.
 
 ## Architecture
 
-The site is dependency-free and zero-build:
+Static HTML and CSS, with local images. Vercel framework preset: **Other**. There is no install command, build command, or output directory.
 
-- `index.html` — semantic content and metadata
-- `styles.css` — visual system and responsive layout
-- `script.js` — progressive interactions
-- `assets/` — favicon and social preview
-- `vercel.json` — security and caching headers
+## Local review
 
-Vercel framework preset: **Other**. There is no install command, build command, or output directory.
+1. Serve the repository with `python3 -m http.server 4173`.
+2. Review desktop, tablet, and mobile layouts, including 320px width and 200% zoom.
+3. Check keyboard focus, skip link, section navigation, and every project link.
+4. Verify all preview images load and all content remains visible with JavaScript disabled.
+5. Check metadata and the social preview. The canonical domain is `johan-vaz-site.vercel.app`.
+6. If changing JSON-LD, update the matching script hash in the CSP.
 
-## Approval-gated release flow
+## Release
 
-Do not push a branch or run `vercel` commands until the local build has been reviewed and explicit deployment approval has been given. A branch push may create a public Vercel preview.
+Use the deployment authorization established for the task. Publish a reviewed feature branch and inspect the Vercel preview. Merge only the reviewed commit after its checks pass. Verify the production alias serves the merged commit.
 
-1. Work and test on a local feature branch.
-2. Review local desktop/mobile screenshots, interactions, links, metadata, and accessibility checks.
-3. Ask for approval to create a Vercel preview.
-4. After approval, push only the feature branch and review the generated preview URL.
-5. Ask separately for production-deployment approval.
-6. Only after production approval, merge into `main` and push `origin/main`.
-7. Verify the production URL, social image, security headers, anchor navigation, and external links.
+If a manual deployment is necessary, link the checkout to the existing project, inspect any generated local environment files without exposing secrets, and deploy the clean merged revision with its Git commit metadata.
 
-The existing Git integration should be used rather than creating a duplicate Vercel project with the CLI.
+## Production checks
 
-## Local preview
-
-Serve the directory with any static server, for example:
-
-```bash
-python3 -m http.server 4173 --directory .
-```
-
-Then open <http://localhost:4173>.
-
-Opening `index.html` directly also works because CSS and JavaScript use relative paths.
-
-## Post-release checklist
-
-- [ ] Confirm `https://johanvaz.vercel.app/` loads without console errors.
-- [ ] Check the four interactive project previews by keyboard and pointer.
-- [ ] Check 390px mobile, tablet, and desktop layouts.
-- [ ] Confirm the Open Graph image resolves at `/assets/johan-vaz-og.png`.
-- [ ] Confirm `robots.txt` and `sitemap.xml` resolve.
-- [ ] Confirm CSP and other response headers in browser developer tools.
-- [ ] Add the final URL to the résumé, GitHub profile, and LinkedIn featured section.
+- Confirm the homepage, stylesheet, six project previews, favicon, social image, robots file, and sitemap return successfully.
+- Confirm production desktop/mobile layouts and keyboard navigation.
+- Check security headers and browser console for CSP or resource errors.
+- Check the nine live project URLs and three recorded walkthrough links.
+- Compare the served HTML and assets with the merged revision.
