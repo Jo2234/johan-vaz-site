@@ -1,0 +1,50 @@
+WEBVTT
+
+1
+00:00:02.500 --> 00:00:08.601
+FluentAI remembers your level and weak topics.
+This lesson focuses on the Spanish past tense.
+
+2
+00:00:13.500 --> 00:00:21.009
+OpenAI builds a lesson around yesterday, with
+useful vocabulary, examples, and six practice
+questions.
+
+3
+00:00:23.000 --> 00:00:28.525
+Here, I answer the quiz and deliberately write
+mañana where the question asks for yesterday.
+
+4
+00:00:35.000 --> 00:00:41.677
+The app explains the mistake, awards fifty-five
+experience points, and adds the weak areas to
+the review queue.
+
+5
+00:00:47.500 --> 00:00:52.940
+The text tutor picks up the same goal, asking
+what I did yesterday to reinforce the lesson.
+
+6
+00:00:57.000 --> 00:01:02.013
+I reply with another deliberate error: using the
+present tense, voy, after ayer.
+
+7
+00:01:05.000 --> 00:01:11.997
+The tutor corrects voy to fui, preserves the
+meaning, and asks what I bought. It saves that
+correction for review.
+
+8
+00:01:18.000 --> 00:01:23.141
+The memory inspector shows the saved learner
+state, including the correction and review
+queue.
+
+9
+00:01:25.500 --> 00:01:30.428
+Reloading keeps the experience points and
+scheduled reviews, ready for the next session.
