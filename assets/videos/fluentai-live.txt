@@ -1,0 +1,17 @@
+FluentAI remembers your level and weak topics. This lesson focuses on the Spanish past tense.
+
+OpenAI builds a lesson around yesterday, with useful vocabulary, examples, and six practice questions.
+
+Here, I answer the quiz and deliberately write mañana where the question asks for yesterday.
+
+The app explains the mistake, awards fifty-five experience points, and adds the weak areas to the review queue.
+
+The text tutor picks up the same goal, asking what I did yesterday to reinforce the lesson.
+
+I reply with another deliberate error: using the present tense, voy, after ayer.
+
+The tutor corrects voy to fui, preserves the meaning, and asks what I bought. It saves that correction for review.
+
+The memory inspector shows the saved learner state, including the correction and review queue.
+
+Reloading keeps the experience points and scheduled reviews, ready for the next session.

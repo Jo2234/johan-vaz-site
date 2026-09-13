@@ -1,5 +1,0 @@
-FluentAI — narrated walkthrough
-
-FluentAI links lessons with learner memory. This demo uses scripted model responses. A temporary learner profile opens a past-tense lesson, with a visible selection reason. The learner answers six questions, mixing vocabulary, sentences, and translation. One answer is deliberately wrong so we can follow the feedback. Five answers are correct. The mistake gets feedback and becomes a scheduled review item. Back home, the score, experience points, and review queue reflect the completed lesson. Now text practice picks up the same past-tense topic. A short Spanish reply receives feedback and a follow-up prompt. A second reply continues the exchange. These are scripted responses, exercising the app's practice workflow. The memory inspector exposes the saved profile, skills, topic scores, and mistakes. Reloading keeps the lesson result and review queue. This demonstrates saved progress across the workflow; live voice and model quality are outside this recording.
-
-Narration added in post-production; model responses in the recording are scripted.

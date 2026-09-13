@@ -1,0 +1,11 @@
+Narrator: iGhost sends an AI user to explore a website. Ada is looking for evidence of Johan’s work.
+
+Narrator: I’ve shortened the wait. Here’s Ada’s replay.
+
+Ada: I'm scrolling down. Okay, I can already see two AI-related demos, but I'm not ready to judge them from the cards alone. I want the project descriptions, and ideally something concrete about how they're implemented. This Equity Research Copilot says it traces evidence, which is a meaningful claim for an AI workflow. So I'm opening the source first. All right, this is more useful. I can inspect the repository, see actual implementation details, and there are recent commits. That's credible evidence, but it's still only one project. I'm opening Jo2234's public profile to check the broader body of work.
+
+Ada: The profile makes specific claims and links reviewable contributions. I'm scrolling down. I still want the complete project list before I trust the summary.
+
+Narrator: After exploring the repository and profile, Ada recommends putting more implementation evidence directly on the project cards.
+
+Narrator: Her findings become a scoped Codex prompt, ready to review alongside the captured screens.
