@@ -16,7 +16,7 @@ Open http://localhost:4173. No install step, build pipeline, web fonts, or analy
 
 - `index.html`: project descriptions, links, contact information, and metadata.
 - `styles.css`: layout, responsive styles, keyboard focus, and reduced-motion support.
-- `assets/demos/`: compressed screenshots captured from the actual public projects on 13 September 2026.
+- `assets/demos/`: compressed screenshots of all six redesigned public interfaces, captured on 13 September 2026. Versioned filenames keep cached previews current.
 - `assets/portfolio-social-v2.png`: social preview.
 - `assets/videos/`: narrated recordings, captions, transcripts, and poster images.
 - `media.js`: pauses the other walkthroughs when playback starts.
