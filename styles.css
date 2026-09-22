@@ -159,21 +159,6 @@ em {
   color: var(--blue);
 }
 
-.hero {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 90px;
-  padding-block: 64px 64px;
-  align-items: end;
-}
-
-.hero .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 23px;
-}
-
 h1 {
   font-size: clamp(64px, 6.8vw, 96px);
   line-height: 1.02;
@@ -184,23 +169,6 @@ h1 {
 h1 em {
   color: var(--blue);
   letter-spacing: -.045em;
-}
-
-.hero-intro {
-  max-width: 385px;
-  padding-bottom: 3px;
-}
-
-.hero-intro > p {
-  font-size: 17px;
-  line-height: 1.6;
-  letter-spacing: -.02em;
-}
-
-.hero-intro .hero-invitation {
-  color: var(--muted);
-  font-size: 14px;
-  margin-top: 15px;
 }
 
 .button {
@@ -229,20 +197,6 @@ h1 em {
 
 .primary:hover {
   background: var(--blue);
-}
-
-.hero-location {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 22px;
-  font-size: 11px;
-  color: var(--muted);
-}
-
-.location-cross {
-  font-size: 18px;
-  color: var(--blue);
 }
 
 .work {
@@ -440,7 +394,7 @@ h2 {
 /* Native video controls keep the walkthroughs usable without JavaScript. */
 .walkthrough-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
 }
 .walkthrough-card {
@@ -614,29 +568,18 @@ h2 {
 }
 
 @media (min-width: 1500px) {
-  .hero {
-    padding-block: 76px 76px;
-  }
+
 }
 
 @media (max-width: 1000px) {
   .wrap {
     width: calc(100% - 64px);
   }
-  .hero {
-    gap: 40px;
-    grid-template-columns: 1.2fr 1fr;
-    padding-block: 64px 70px;
-  }
+
   h1 {
     font-size: clamp(61px, 7.5vw, 76px);
   }
-  .hero-intro > p {
-    font-size: 15px;
-  }
-  .hero-location {
-    font-size: 10px;
-  }
+
   .project-preview {
     padding-inline: 14px;
   }
@@ -696,35 +639,15 @@ h2 {
   .nav-count {
     font-size: 9px;
   }
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 26px;
-    padding-block: 47px 44px;
-  }
-  .hero .eyebrow {
-    font-size: 10px;
-    margin-bottom: 22px;
-  }
+
   h1 {
     font-size: clamp(60px, 12vw, 84px);
   }
-  .hero-intro {
-    max-width: 420px;
-  }
-  .hero-intro > p {
-    font-size: 15px;
-  }
-  .hero-intro .hero-invitation {
-    font-size: 12px;
-    margin-top: 12px;
-  }
+
   .primary {
     margin-top: 19px;
   }
-  .hero-location {
-    margin-top: 17px;
-    font-size: 10px;
-  }
+
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
@@ -859,4 +782,60 @@ h2 {
   .project-preview:hover img {
     transform: none;
   }
+}
+
+/* FluentAI leads with the award, source story, and real product walkthrough. */
+.featured { padding-block: 30px 64px; }
+.featured-intro { display: flex; justify-content: space-between; gap: 24px; padding-bottom: 24px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.featured-intro span { text-align: right; }
+.featured-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 72px; align-items: start; scroll-margin-top: 24px; }
+.featured-copy .eyebrow { color: var(--muted); margin-bottom: 15px; }
+.featured-copy .eyebrow span { margin-inline: 10px; color: var(--green); }
+.featured h1 { font-size: clamp(64px, 6.4vw, 88px); letter-spacing: -.06em; line-height: 1.05; }
+.featured h1 > span { color: var(--blue); }
+.featured-tagline { font-size: clamp(27px, 2.7vw, 37px); line-height: 1.2; letter-spacing: -.035em; margin-top: 14px; }
+.featured-tagline em { color: var(--blue); }
+.featured-description { max-width: 440px; color: var(--muted); font-size: 15px; line-height: 1.65; margin-top: 16px; }
+.award { border-top: 1px solid #c7d7c6; margin-top: 20px; padding-top: 15px; }
+.award-title { display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 600; color: #315e40; line-height: 1.5; }
+.award-title > span { font-size: 22px; }
+.award-amount { display: flex; align-items: center; gap: 19px; margin-top: 8px; }
+.award-amount strong { font-size: clamp(46px, 4.2vw, 58px); font-weight: 500; line-height: 1.1; letter-spacing: -.055em; }
+.award-amount > span { font-size: 14px; line-height: 1.45; }
+.award-detail { color: var(--muted); font-size: 12px; line-height: 1.7; margin-top: 8px; }
+.story-link { margin-top: 16px; font-size: 12px; gap: 15px; }
+.featured-demo { padding-top: 7px; }
+.featured-demo-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; }
+.featured-demo-heading h2 { font-size: 16px; font-weight: 500; letter-spacing: -.02em; }
+.featured-demo-heading > span { color: var(--muted); font-size: 11px; white-space: nowrap; }
+.featured-demo video { aspect-ratio: 16 / 10; border-radius: 12px; box-shadow: 0 18px 42px -28px #21231f70; }
+.featured-demo > p { font-size: 11px; margin-top: 16px; }
+.featured-capabilities { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-top: 1px solid var(--line); padding-top: 24px; margin-top: 14px; }
+.featured-capabilities h3 { font-size: 15px; font-weight: 500; letter-spacing: -.025em; line-height: 1.4; }
+.featured-capabilities p { margin-top: 9px; color: var(--muted); font-size: 12px; line-height: 1.65; }
+@media (max-width: 1000px) {
+  .featured-grid { gap: 36px; }
+  .featured-intro { flex-direction: column; gap: 4px; }
+  .featured-intro span { text-align: left; }
+  .site-header nav { gap: 22px; }
+  .nav-contact { padding-left: 22px; }
+}
+@media (max-width: 760px) {
+  .featured-grid { grid-template-columns: 1fr; gap: 38px; }
+  .featured { padding-block: 22px 44px; }
+  .featured-intro { padding-bottom: 30px; font-size: 11px; }
+  .featured h1 { font-size: 64px; }
+  .featured-tagline { font-size: 31px; }
+  .featured-description { font-size: 14px; }
+  .award-amount strong { font-size: 48px; }
+  .site-header nav { gap: 16px; }
+  .site-header nav a[href="#about"] { display: none; }
+  .featured-demo { padding-top: 0; }
+}
+@media (max-width: 360px) {
+  .featured h1 { font-size: 58px; }
+  .featured-tagline { font-size: 28px; }
+  .featured-capabilities { grid-template-columns: 1fr; gap: 21px; }
+  .site-header nav { gap: 12px; }
+  .story-link { width: 100%; font-size: 11px; padding-inline: 13px; }
 }
